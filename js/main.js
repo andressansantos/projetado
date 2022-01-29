@@ -1,45 +1,28 @@
-function formCotacao(){
 
-    var form =  document.getElementById("formulario");    
-    var form2 =  document.getElementById("formulario2");
+function criandoCotacao() {
 
-}
+    const nome = document.getElementById("nome");
+    const idade = document.getElementById("idade");
+    const plano = document.getElementById("reg");
+    const id = document.getElementById("id1");
 
-function criandoCotacao(){
-    
+    let dados = JSON.parse(localStorage.getItem("dadosCotacao")) ?? [];
 
-    var nome = document.getElementsByName("nome");
-    var idade = document.getElementsByName("idade");
-    var plano = document.getElementsByName("reg");   
-    var id = document.getElementsByName("id1");
-
-    var dados = JSON.parse(localStorage.getItem("dadosCotacao"));
-
-        
-    if (dados.length == null)
-    {
-        localStorage.setItem("dadosCotacao", "[]");
-        dados = [];
-    }
-
-    var auxRegistro = {
+    dados.push({
         nome: nome.value,
         idade: idade.value,
         plano: plano.value,
-        id: id1.value
-    }
-
-    dados.push(auxRegistro);
+        id: id.value
+    });
 
     localStorage.setItem("dadosCotacao", JSON.stringify(dados));
     alert("Registro incluido com sucesso para cotação! ")
 
-   nome.value = "";
+
+    nome.value = "";
     idade.value = "";
     plano.value = "";
     id.value = "";
 
-
-
-  
 }
+
